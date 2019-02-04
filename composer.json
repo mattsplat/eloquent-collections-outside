@@ -1,0 +1,12 @@
+{
+  "require": {
+    "php": "7.2",
+    "illuminate/database": "^5.5",
+    "tightenco/collect": "^5.7"
+  },
+  "autoload": {
+    "classmap": [
+      "Models"
+    ]
+  }
+}
