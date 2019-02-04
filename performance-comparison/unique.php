@@ -3,11 +3,25 @@ require '../bootstrap.php';
 $array=[
     ["id"=>2,"name"=>"Apple"],
     ["id"=>1,"name"=>"Banana"],
+    ["id"=>2,"name"=>"CranApple"],
+    ["id"=>1,"name"=>"Banana"],
+    ["id"=>4,"name"=>"Pear"],
+    ["id"=>3,"name"=>"Kiwi"],
     ["id"=>2,"name"=>"Apple"],
+    ["id"=>1,"name"=>"Banana"],
+    ["id"=>2,"name"=>"CranApple"],
+    ["id"=>11,"name"=>"Banana"],
+    ["id"=>14,"name"=>"Pear"],
+    ["id"=>13,"name"=>"Kiwi"],
+    ["id"=>12,"name"=>"Apple"],
+    ["id"=>1,"name"=>"Banana"],
+    ["id"=>2,"name"=>"CranApple"],
     ["id"=>1,"name"=>"Banana"],
     ["id"=>4,"name"=>"Pear"],
     ["id"=>3,"name"=>"Kiwi"],
 ];
+
+
 $time_results = collect([]);
 
 
@@ -20,24 +34,30 @@ function for_unique($arr, $column = null)
     foreach ($arr as $row) {
         if (empty($unique[$row[$column]])) {
             $temp []= $row;
+            $unique[$row[$column]] = true;
         }
     }
     return $temp;
 }
 
-function array_unique_function($arr){
-    return array_map( function ($row) {
-        return $row['name'];
-    },$arr);
+function array_unique_function($arr, $column = 'id'){
+    $unique = [];
+    return array_filter( $arr, function ($row) use (&$unique, $column) {
+        if (empty($unique[$row[$column]])) {
+            $unique[$row[$column]] = true;
+            return true;
+        }
+        return false;
+    });
 }
 
-$times = 100000;
+$times = 10000;
 //////////////////////////////////////
 
 $start = microtime(1);
 
 foreach (range(1, $times) as $i) {
-    $for_mapped = for_map($array);
+    $for_mapped = for_unique($array, 'id');
 }
 
 $end = microtime(1);
@@ -49,7 +69,7 @@ dump($time . ' ms');
 $start = microtime(1);
 
 foreach (range(1, $times) as $i) {
-    $array_mapped = array_map_function($array);
+    $array_mapped = array_unique_function($array, 'id');
 }
 
 $end = microtime(1);
