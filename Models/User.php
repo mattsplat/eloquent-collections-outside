@@ -12,4 +12,9 @@ class User extends Model
         return $this->hasMany(Todo::class);
 
     }
+
+    public function getFirstNameAttribute()
+    {
+        return explode(' ', $this->name)[0] ?? null;
+    }
 }

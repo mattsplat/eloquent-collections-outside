@@ -1,32 +1,44 @@
 <?php
 require 'bootstrap.php';
 
-$array = [
-    [
-        'uid' => '100',
-        'name' => 'Sandra Shush',
-        'number_of_things' => 5
-    ],
-    [
-        'uid' => '5465',
-        'name' => 'Stefanie Mcmohn',
-        'number_of_things' => 6
-    ],
-    [
-        'uid' => '40489',
-        'name' => 'Michael',
-        'number_of_things' => 2
-    ]
-];
+//$array = [
+//    [
+//        'uid' => '100',
+//        'name' => 'Sandra Shush',
+//        'number_of_things' => 5
+//    ],
+//    [
+//        'uid' => '5465',
+//        'name' => 'Stefanie Mcmohn',
+//        'number_of_things' => 6
+//    ],
+//    [
+//        'uid' => '40489',
+//        'name' => 'Michael',
+//        'number_of_things' => 2
+//    ]
+//];
+//
+//dump(collect($array)->average('uid'));
+//
+//$result= collect($array)->where('number_of_things', '>=', 4);
+//
+//$array = array_filter($array, function ($row) {
+//    return ($row['number_of_things'] >= 4);
+//});
+//
+//
+//
+//dd($result, $array);
 
-dump(collect($array)->average('uid'));
+//echo Note::count(). ' number of Notes'.PHP_EOL;
 
-$result= collect($array)->where('number_of_things', '>=', 4);
+$user = User::fi;
 
-$array = array_filter($array, function ($row) {
-    return ($row['number_of_things'] >= 4);
-});
+//$u = User::insert($user);
+//$u= User::first();
 
+dump($user, User::count());
 
-
-dd($result, $array);
+$count = User::get();
+dump($count);

@@ -7,22 +7,34 @@ require "vendor/autoload.php";
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 
-
+$base_path = __DIR__;
 $capsule = new Capsule;
 
-$capsule->addConnection([
+$sqlite = [
+    "driver" => "sqlite",
 
-    "driver" => "mysql",
+    "host" =>"127.0.0.1",
 
-    "host" =>"192.168.10.10",
-
-    "database" => "elo",
+    "database" => $base_path.'/database/db.sqlite',
 
     "username" => "homestead",
 
     "password" => "secret"
+];
 
-]);
+$mysql = [
+    "driver" => "mysql",
+
+    "host" =>"192.168.10.10",
+
+    "database" => 'elo',
+
+    "username" => "homestead",
+
+    "password" => "secret"
+];
+
+$capsule->addConnection($mysql);
 
 //Make this Capsule instance available globally.
 $capsule->setAsGlobal();
