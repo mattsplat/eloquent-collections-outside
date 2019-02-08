@@ -21,6 +21,8 @@ Capsule::schema()->create('users', function ($table) {
 
     $table->string('api_key')->nullable()->unique();
 
+    $table->unsignedInteger('country_id');
+
     $table->rememberToken();
 
     $table->timestamps();

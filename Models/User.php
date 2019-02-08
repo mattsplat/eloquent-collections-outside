@@ -13,8 +13,15 @@ class User extends Model
 
     }
 
+    public function notes()
+    {
+        return $this->morphMany(Note::class, 'noteable');
+    }
+
     public function getFirstNameAttribute()
     {
         return explode(' ', $this->name)[0] ?? null;
     }
+
+
 }
