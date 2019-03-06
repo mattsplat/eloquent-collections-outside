@@ -1,5 +1,5 @@
 <?php
-require '../bootstrap.php';
+require __DIR__.'/../bootstrap.php';
 $array=[
     ["id"=>2,"name"=>"Apple"],
     ["id"=>1,"name"=>"Banana"],

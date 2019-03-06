@@ -34,7 +34,7 @@ $mysql = [
     "password" => "secret"
 ];
 
-$capsule->addConnection($mysql);
+$capsule->addConnection($sqlite);
 
 //Make this Capsule instance available globally.
 $capsule->setAsGlobal();

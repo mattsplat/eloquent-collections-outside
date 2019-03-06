@@ -2,7 +2,8 @@
   "require": {
     "php": "^7.1",
     "illuminate/database": "^5.5",
-    "tightenco/collect": "^5.7"
+    "tightenco/collect": "^5.7",
+    "fzaninotto/faker": "^1.8"
   },
   "autoload": {
     "classmap": [

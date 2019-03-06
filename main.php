@@ -1,44 +1,18 @@
 <?php
 require 'bootstrap.php';
 
-//$array = [
-//    [
-//        'uid' => '100',
-//        'name' => 'Sandra Shush',
-//        'number_of_things' => 5
-//    ],
-//    [
-//        'uid' => '5465',
-//        'name' => 'Stefanie Mcmohn',
-//        'number_of_things' => 6
-//    ],
-//    [
-//        'uid' => '40489',
-//        'name' => 'Michael',
-//        'number_of_things' => 2
-//    ]
-//];
-//
-//dump(collect($array)->average('uid'));
-//
-//$result= collect($array)->where('number_of_things', '>=', 4);
-//
-//$array = array_filter($array, function ($row) {
-//    return ($row['number_of_things'] >= 4);
-//});
-//
-//
-//
-//dd($result, $array);
 
-//echo Note::count(). ' number of Notes'.PHP_EOL;
+$users = User::orderBy('name')->limit(10)->get();
 
-$user = User::fi;
+$grouped = $users->mapToGroups( function ($user) {
+    return [
+        $user->name[0] => $user
+    ];
+});
 
-//$u = User::insert($user);
-//$u= User::first();
+$sum = $grouped->sum(function ($group) {
+    return $group->count();
+});
 
-dump($user, User::count());
-
-$count = User::get();
-dump($count);
+dump($sum);
+dd($grouped['A']->count());
